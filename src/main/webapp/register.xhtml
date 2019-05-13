@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Register page</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h3>Registration form</h3>
+		<table>
+			<tr>
+				<td>Username:</td>
+				<td>
+					<h:inputText label="Username" id="username" value="#{userBean.username}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td>
+					<h:inputText label="Password" id="password" value="#{userBean.password}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td>
+					<h:inputText label="Name" id="name" value="#{userBean.name}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Nickname:</td>
+				<td>
+					<h:inputText label="Nickname" id="nickname" value="#{userBean.nickname}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td>
+					<h:inputText label="Surname" id="surname" value="#{userBean.surname}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>
+					<h:inputText label="Email" id="Email" value="#{userBean.email}"
+					required="true"/>
+					
+				</td>
+			</tr>
+			
+			
+		</table>
+		<p><h:messages /></p>
+		<p><h:commandButton value="Create account" action="#{userBean.confirmButton}"></h:commandButton>
+		
+		</p>
+		
+	</h:form>
+</h:body>
+</html>
