@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import rs.cubes.FullWebApp.domain.Article;
 import rs.cubes.FullWebApp.domain.User;
+import rs.cubes.FullWebApp.rest.ErrorMessage;
 
 @Stateless
 public class UserService {
@@ -16,6 +17,9 @@ public class UserService {
 	private EntityManager em;
 	
 	public User createUser(User u) {
+		if(u.getUsername().length()>20) {
+			throw new AppException(ErrorMessage.usernameTooLong());
+		}
 		em.persist(u);
 		return u;
 	}
@@ -28,16 +32,5 @@ public class UserService {
 		return query.getResultList();
 	}
 	
-	public Article createArticle(Article a) {
-		em.persist(a);
-		return a;
-	}
 	
-	public List<Article> getAllArticles(){
-		
-		String q = "select a from Article a";
-		TypedQuery<Article> query = em.createQuery(q,Article.class);
-		
-		return query.getResultList();
-	}
 }

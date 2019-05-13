@@ -1,5 +1,6 @@
 package rs.cubes.FullWebApp.jsf;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,13 +9,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import rs.cubes.FullWebApp.domain.Article;
+import rs.cubes.FullWebApp.service.ArticleService;
 import rs.cubes.FullWebApp.service.UserService;
 
 @Named
 @RequestScoped
-public class ArticleBean {
+public class ArticleBean implements Serializable {
 	@Inject
-	private UserService as;
+	private ArticleService as;
 
 	private long id;
 	private String title, content, shortContent;
@@ -23,12 +25,7 @@ public class ArticleBean {
 	private Date date;
 	private ArrayList<String> keywords;
 	
-	public UserService getAs() {
-		return as;
-	}
-	public void setAs(UserService as) {
-		this.as = as;
-	}
+	
 	public long getId() {
 		return id;
 	}
