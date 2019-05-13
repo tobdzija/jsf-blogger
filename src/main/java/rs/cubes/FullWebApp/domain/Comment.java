@@ -3,10 +3,13 @@ package rs.cubes.FullWebApp.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Comment {
-
+	@Id
+	@GeneratedValue
 	private long id;
 	private Date creationDateTime;
 	private String text;

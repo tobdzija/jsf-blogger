@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Article {
-
+	@Id
+	@GeneratedValue
 	private long id;
 	private String title, content, shortContent;
 	private int ratingCounter;

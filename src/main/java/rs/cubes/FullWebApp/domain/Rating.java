@@ -1,10 +1,13 @@
 package rs.cubes.FullWebApp.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Rating {
-
+	@Id
+	@GeneratedValue
 	private long id;
 	private int[] rating = {1,2,3,4,5};
 	
