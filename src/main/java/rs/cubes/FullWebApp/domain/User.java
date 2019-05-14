@@ -1,8 +1,12 @@
 package rs.cubes.FullWebApp.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 public class User {
@@ -10,6 +14,17 @@ public class User {
 	@GeneratedValue
 	private long id;
 	private String username, nickname, surname, name, password, email;
+	
+	// atributi za mapiranje veza izmedju entiteta
+	//@XmlTransient  ova anotacija mozda treba da stoji nad nekim drugim atributom !!
+	@OneToMany(mappedBy="author")
+	private Set<Article> articles;
+	
+	@OneToMany(mappedBy="user")
+	private Set<Rating> raitings;
+	
+	@OneToMany(mappedBy="author")
+	private Set<Comment> comments;
 	
 	public User() {}
 	

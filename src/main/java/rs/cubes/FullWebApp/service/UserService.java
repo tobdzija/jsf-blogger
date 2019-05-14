@@ -9,7 +9,9 @@ import javax.persistence.TypedQuery;
 
 import rs.cubes.FullWebApp.domain.Article;
 import rs.cubes.FullWebApp.domain.User;
+import rs.cubes.FullWebApp.domain.UserQueries;
 import rs.cubes.FullWebApp.rest.ErrorMessage;
+import rs.cubes.FullWebApp.utils.EmailRegex;
 
 @Stateless
 public class UserService {
@@ -19,7 +21,11 @@ public class UserService {
 	public User createUser(User u) {
 		if(u.getUsername().length()>20) {
 			throw new AppException(ErrorMessage.usernameTooLong());
-		}
+		}else if(u.getNickname().length()>20) {throw new AppException(ErrorMessage.nicknameTooLong());}
+		else if(u.getSurname().length()>50) {throw new AppException(ErrorMessage.surnameTooLong());}
+		else if(u.getName().length()>20) {throw new AppException(ErrorMessage.nameTooLong());}
+		else if(!EmailRegex.validate(u.getEmail())) {throw new AppException(ErrorMessage.emailFormatError());}
+		else if(UserQueries.usernameExists(em, u.getUsername())) {throw new AppException(ErrorMessage.usernameExists());}
 		em.persist(u);
 		return u;
 	}
@@ -31,6 +37,8 @@ public class UserService {
 		
 		return query.getResultList();
 	}
-	
+	public void deleteAll() {
+		em.clear();
+	}
 	
 }

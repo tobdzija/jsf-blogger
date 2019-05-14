@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -14,6 +15,13 @@ public class Comment {
 	private Date creationDateTime;
 	private String text;
 	private int upVote, downVote;
+	
+	// atributi za mapiranje veza sa drugim entitetima
+	@ManyToOne
+	private User author;
+	
+	@ManyToOne
+	private Article article;
 	
 	public Comment() {}
 

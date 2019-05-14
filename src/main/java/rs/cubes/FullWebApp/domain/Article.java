@@ -2,10 +2,14 @@ package rs.cubes.FullWebApp.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Article {
@@ -17,6 +21,19 @@ public class Article {
 	private double averageRating; 
 	private Date date;
 	private ArrayList<String> keywords;
+	
+	// mapiranje veza sa entitetima
+	@ManyToOne
+	private User author;
+	
+	@OneToMany(mappedBy="article")
+	private Set<Comment> comments;
+	
+	@ManyToMany
+	private Set<Tag> tags;
+	
+	@OneToMany(mappedBy="article")
+	private Set<Rating> ratings;
 	
 	public Article() {}
 	

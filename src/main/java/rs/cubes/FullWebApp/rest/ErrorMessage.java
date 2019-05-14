@@ -27,7 +27,8 @@ public class ErrorMessage {
 	public static ErrorMessage wrongPassword() {return new ErrorMessage(105,"Neispravan password.");}
 	public static ErrorMessage emailTooLong() {return new ErrorMessage(106,"Unet USERNAME ima vise od 70 karaktera.");}
 	public static ErrorMessage emailFormatError() {return new ErrorMessage(107,"Neispravan format unetog mail-a.");}
-	
+	public static ErrorMessage emailExists() {return new ErrorMessage(108,"Email postoji u bazi.");}
+	public static ErrorMessage usernameExists() {return new ErrorMessage(109,"Username vec postoji u bazi");}
 	
 	
 }
