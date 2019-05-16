@@ -78,6 +78,7 @@ public class UserBean implements Serializable{
 		email="";
 		
 	}
+	
 	//promeni povratni tip !
 	public void logIn(String un,String pw) {
 		if(us.logIn(un, pw)!=null) {
@@ -86,6 +87,11 @@ public class UserBean implements Serializable{
 			System.out.println("bio sam ovde");
 		}		
 	}
+	
+	public void logOut() {
+			lamp = true;
+	}
+	
 	private boolean lamp=true;
 	public boolean isLamp() {
 		return lamp;

@@ -24,6 +24,7 @@ public class UserService {
 		else if(u.getSurname().length()>50) {throw new AppException(ErrorMessage.surnameTooLong());}
 		else if(u.getName().length()>20) {throw new AppException(ErrorMessage.nameTooLong());}
 		else if(!EmailRegex.validate(u.getEmail())) {throw new AppException(ErrorMessage.emailFormatError());}
+		else if(UserQueries.emailExists(em, u.getEmail())) {throw new AppException(ErrorMessage.emailExists());}
 		else if(UserQueries.usernameExists(em, u.getUsername())) {throw new AppException(ErrorMessage.usernameExists());}
 		em.persist(u);
 		return u;
@@ -40,8 +41,8 @@ public class UserService {
 		em.clear();
 	}
 	public String logIn(String un,String pw) {
-		System.out.println("Username je: "+ un);
-		System.out.println("Password je: " +pw);
+		System.out.println("Username je: " + un);
+		System.out.println("Password je: " + pw);
 		String nick = "";
 		String q = "select u from User u where u.username = :un and u.password = :pw";
 		TypedQuery<User> query = em.createQuery(q,User.class);
