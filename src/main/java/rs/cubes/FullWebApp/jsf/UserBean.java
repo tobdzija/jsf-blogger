@@ -76,6 +76,23 @@ public class UserBean implements Serializable{
 		nickname="";
 		surname="";
 		email="";
+		
 	}
+	//promeni povratni tip !
+	public void logIn(String un,String pw) {
+		if(us.logIn(un, pw)!=null) {
+			setNickname(us.logIn(un, pw));
+			setLamp(false);
+			System.out.println("bio sam ovde");
+		}		
+	}
+	private boolean lamp=true;
+	public boolean isLamp() {
+		return lamp;
+	}
+	public void setLamp(boolean lamp) {
+		this.lamp = lamp;
+	}
+	
 	
 }

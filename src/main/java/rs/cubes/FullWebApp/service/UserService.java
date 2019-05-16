@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import rs.cubes.FullWebApp.domain.Article;
 import rs.cubes.FullWebApp.domain.User;
 import rs.cubes.FullWebApp.domain.UserQueries;
 import rs.cubes.FullWebApp.rest.ErrorMessage;
@@ -40,5 +39,20 @@ public class UserService {
 	public void deleteAll() {
 		em.clear();
 	}
-	
+	public String logIn(String un,String pw) {
+		System.out.println("Username je: "+ un);
+		System.out.println("Password je: " +pw);
+		String nick = "";
+		String q = "select u from User u where u.username = :un and u.password = :pw";
+		TypedQuery<User> query = em.createQuery(q,User.class);
+		query.setParameter("un", un);
+		query.setParameter("pw", pw);
+		
+		List<User> u = query.getResultList();
+		if(u.size()!=0) {
+			nick = u.get(0).getNickname();
+		}
+		System.out.println("Nik je :" + nick);
+		return nick;
+	}
 }

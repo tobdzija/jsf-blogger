@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://java.sun.com/jsf/html"
+>
+    <h:head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        </meta>
+    </h:head>
+    <h:body>
+    <p>
+    	<h:form rendered="#{userBean.isLamp()}" >
+        	<h:panelGrid columns="3" cellpadding="5">
+           		<p:outputLabel for="username" value="Username:" />
+            	<p:inputText id="username"  required="true" label="Username" value="#{userBean.username}">
+                	<f:validateLength minimum="2" />
+            	</p:inputText>
+            	
+            	<p:outputLabel for="password" value="Password:" />
+            	<p:inputText id="password" label="Password" required="true" value="#{userBean.password}">
+                	<f:validateLength minimum="2" />
+            	</p:inputText>
+        	</h:panelGrid>
+ 
+        	<p:commandButton value="Log in" action="#{userBean.logIn(userBean.username,userBean.password)}" />
+		</h:form>
+		</p>
+		<p>
+		<p:panelGrid rendered="#{!userBean.isLamp()}" >
+			<p:outputLabel value="#{userBean.getNickname()}"/>
+		</p:panelGrid>
+		</p>
+    </h:body>
+</html>
