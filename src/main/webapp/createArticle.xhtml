@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="template.xhtml">
+
+		<ui:define name="top">
+			<h:form id="form1">
+				<p:menubar>
+					<p:menuitem value="Home" url="indexNew.xhtml" />
+
+					<p:submenu label="Articles">
+						<p:menuitem value="News" url="#" />
+						<p:submenu label="Sport" url="#">
+							<p:menuitem value="Football" url="#" />
+							<p:menuitem value="Basketball" url="#" />
+							<p:menuitem value="Tennis" url="#" />
+						</p:submenu>
+						<p:menuitem value="IT" url="#" />
+					</p:submenu>
+
+					<p:menuitem value="Create Article" action="createArticle" />
+
+					<c:facet name="options">
+						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
+							action="login.xhtml" />
+						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
+							action="register.xhtml" />
+						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
+							action="#{userBean.logOut()}" update="form1" />
+					</c:facet>
+				</p:menubar>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="centered">
+			<h:form>
+				<h3 style="margin-top: 0">Basic</h3>
+				<p:textEditor widgetVar="editor1" value="#{editorView.text}"
+					height="300" style="margin-bottom:10px" />
+
+				<p:commandButton value="Submit" update="display"
+					oncomplete="PF('dlg').show()" icon="pi pi-save" />
+				<p:commandButton value="Clear" type="button"
+					onclick="PF('editor1').clear();" icon="pi pi-times" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

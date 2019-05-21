@@ -1,70 +1,80 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsf/core">
 
-<h:head>
-	<title>Register page</title>
-</h:head>
 <h:body>
-	<h:form>
-		<h3>Registration form</h3>
-		<table>
-			<tr>
-				<td>Username:</td>
-				<td>
-					<h:inputText label="Username" id="username" value="#{userBean.username}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td>
-					<h:inputText label="Password" id="password" value="#{userBean.password}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>Name:</td>
-				<td>
-					<h:inputText label="Name" id="name" value="#{userBean.name}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>Nickname:</td>
-				<td>
-					<h:inputText label="Nickname" id="nickname" value="#{userBean.nickname}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>Surname:</td>
-				<td>
-					<h:inputText label="Surname" id="surname" value="#{userBean.surname}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td>
-					<h:inputText label="Email" id="Email" value="#{userBean.email}"
-					required="true"/>
-					
-				</td>
-			</tr>
-			
-			
-		</table>
-		<p><h:messages /></p>
-		<p><h:commandButton id="button" value="Create account" action="#{userBean.confirmButton}"></h:commandButton></p>
-		
-		
-	</h:form>
+	<ui:composition template="template.xhtml">
+
+		<ui:define name="top">
+			<h:form id="form1">
+				<p:menubar>
+					<p:menuitem value="Home" url="indexNew.xhtml" />
+
+					<p:submenu label="Articles">
+						<p:menuitem value="News" url="#" />
+						<p:submenu label="Sport" url="#">
+							<p:menuitem value="Football" url="#" />
+							<p:menuitem value="Basketball" url="#" />
+							<p:menuitem value="Tennis" url="#" />
+						</p:submenu>
+						<p:menuitem value="IT" url="#" />
+					</p:submenu>
+
+					<p:menuitem value="Create Article" action="createArticle" />
+
+					<c:facet name="options">
+						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
+							action="login.xhtml" />
+						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
+							action="register.xhtml" />
+						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
+							action="#{userBean.logOut()}" update="form1" />
+					</c:facet>
+				</p:menubar>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="centered">
+			<h:form>
+				<p:growl id="growl" showDetail="false" />
+				<h3>Registration form</h3>
+				<h:panelGrid columns="2" cellpadding="2">
+					<p:outputLabel value="Username:" />
+					<p:inputText id="username" value="#{userBean.username}"
+						required="true" />
+
+					<p:outputLabel value="Password:" />
+					<p:inputText id="password" value="#{userBean.password}"
+						required="true" />
+
+					<p:outputLabel value="Name:" />
+					<p:inputText id="name" value="#{userBean.name}" required="true" />
+
+					<p:outputLabel value="Nickname:" />
+					<p:inputText id="nickname" value="#{userBean.nickname}"
+						required="true" />
+
+					<p:outputLabel value="Surname:" />
+					<p:inputText id="surname" value="#{userBean.surname}"
+						required="true" />
+
+					<p:outputLabel value="Email:" />
+					<p:inputText id="email" value="#{userBean.email}" required="true" />
+				</h:panelGrid>
+				<p>
+					<h:messages />
+				</p>
+				<p>
+					<p:commandButton id="button" value="Create account"
+						action="#{userBean.confirmButton}" update="growl" />
+				</p>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
