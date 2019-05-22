@@ -23,7 +23,7 @@
 						<p:menuitem value="IT" url="#" />
 					</p:submenu>
 
-					<p:menuitem value="Create Article" url="createArticle.xhtml" />
+					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article" url="createArticle.xhtml" />
 
 					<c:facet name="options">
 						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
@@ -32,7 +32,7 @@
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
 							action="register.xhtml" />
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
-							action="#{userBean.logOut()}" update="form1" />
+							action="#{userBean.logOut()}" />
 					</c:facet>
 				</p:menubar>
 			</h:form>

@@ -3,6 +3,7 @@ package rs.cubes.FullWebApp.jsf;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -11,7 +12,7 @@ import rs.cubes.FullWebApp.domain.User;
 import rs.cubes.FullWebApp.service.UserService;
 
 @Named
-@RequestScoped
+@ApplicationScoped
 public class UserBean implements Serializable{
 	@Inject
 	private UserService us;
@@ -91,8 +92,9 @@ public class UserBean implements Serializable{
 		return "indexNew?faces-redirect=true";
 	}
 	
-	public void logOut() {
+	public String logOut() {
 			lamp = true;
+			return "indexNew?faces-redirect=true";
 	}
 	
 	private boolean lamp=true;
