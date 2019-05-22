@@ -38,14 +38,15 @@
 			</h:form>
 		</ui:define>
 
-		<ui:define name="centered">
+		<ui:define name="centered2">
 			<h:form>
 				<h3 style="margin-top: 0">Basic</h3>
 				<p:textEditor widgetVar="editor1" value="#{editorView.text}"
-					height="300" style="margin-bottom:10px" />
+					height="300" style="margin-bottom:10px"
+					placeholder="Enter your content" />
 
-				<p:commandButton value="Submit" update="display"
-					oncomplete="PF('dlg').show()" icon="pi pi-save" />
+				<p:commandButton value="Submit" oncomplete="PF('dlg').show()"
+					icon="pi pi-save" />
 				<p:commandButton value="Clear" type="button"
 					onclick="PF('editor1').clear();" icon="pi pi-times" />
 
