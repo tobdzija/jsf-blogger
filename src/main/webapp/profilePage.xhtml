@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -7,6 +8,7 @@
 
 <h:body>
 	<ui:composition template="template.xhtml">
+		<ui:define name="title">Blogger</ui:define>
 
 		<ui:define name="top">
 			<h:form id="form1">
@@ -23,10 +25,13 @@
 						<p:menuitem value="IT" url="#" />
 					</p:submenu>
 
-					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article" action="createArticle.xhtml" />
+					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article"
+						url="createArticle.xhtml" />
 
 					<c:facet name="options">
-						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:autoComplete value="#{search}"
+							completeMethod="#{userBean.completeNames}"
+							style="margin:1px 10px 1px 1px;" placeholder="Search" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
 							action="login.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
@@ -38,21 +43,27 @@
 			</h:form>
 		</ui:define>
 
-		<ui:define name="centered2">
-			<h:form>
-				<h3 style="margin-top: 0">Basic</h3>
-				
-				<p:textEditor widgetVar="editor1" value="#{editorView.text}"
-					height="300" style="margin-bottom:10px"
-					placeholder="Enter your content" />
+		<ui:define name="content">
+			<p:panelGrid columns="2" >
+				<c:facet name="header">
+					<p:graphicImage 
+						url="images/tadic.jpg"  width="200" height="200" />
+				</c:facet>
 
-				<p:commandButton value="Submit" oncomplete="PF('dlg').show()"
-					icon="pi pi-save" />
-				<p:commandButton value="Clear" type="button"
-					onclick="PF('editor1').clear();" icon="pi pi-times" />
+				<h:outputText value="Name:" />
+				<h:outputText value="" />
 
-			</h:form>
+			</p:panelGrid>
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="right">
+
 		</ui:define>
 	</ui:composition>
 </h:body>
+
 </html>
