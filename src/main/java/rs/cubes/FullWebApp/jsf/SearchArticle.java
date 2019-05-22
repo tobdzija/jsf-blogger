@@ -14,7 +14,7 @@ import rs.cubes.FullWebApp.domain.User;
 @SessionScoped
 public class SearchArticle implements Serializable {
 
-	@Inject
+	//@Inject
 	private User user;
 
 	public User getUser() {

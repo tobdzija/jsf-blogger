@@ -56,4 +56,12 @@ public class UserService {
 		System.out.println("Nik je :" + nick);
 		return nick;
 	}
+	public List<User> searchUser(String nn) {
+		System.out.println("vrednost nn: " + nn);
+		String q = "select u from User u where u.nickname like concat('%',:nn ,'%')";
+		TypedQuery<User> query= em.createQuery(q,User.class);
+		query.setParameter("nn",nn);
+		List<User> users = query.getResultList();
+		return users;
+	}
 }

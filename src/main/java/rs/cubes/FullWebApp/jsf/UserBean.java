@@ -1,6 +1,7 @@
 package rs.cubes.FullWebApp.jsf;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -80,12 +81,14 @@ public class UserBean implements Serializable{
 	}
 	
 	//promeni povratni tip !
-	public void logIn(String un,String pw) {
-		if(us.logIn(un, pw)!=null) {
+	public String logIn(String un,String pw) {
+		if(us.logIn(un, pw)!="") {
 			setNickname(us.logIn(un, pw));
 			setLamp(false);
 			System.out.println("bio sam ovde");
-		}		
+			return "createArticle?faces-redirect=true";
+		}
+		return "indexNew?faces-redirect=true";
 	}
 	
 	public void logOut() {
@@ -100,5 +103,7 @@ public class UserBean implements Serializable{
 		this.lamp = lamp;
 	}
 	
-	
+	public List<User> completeNames(String nickname){
+		return us.searchUser(nickname);
+	}
 }
