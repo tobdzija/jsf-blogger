@@ -25,14 +25,19 @@
 						<p:menuitem value="IT" url="#" />
 					</p:submenu>
 
-					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article" url="createArticle.xhtml" />
+					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article"
+						url="createArticle.xhtml" />
 
 					<c:facet name="options">
-						<p:autoComplete value="#{search}" completeMethod="#{userBean.completeNames}" style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:autoComplete value="#{search}"
+							completeMethod="#{userBean.completeNames}"
+							style="margin:1px 10px 1px 1px;" placeholder="Search" onselect="profilePage.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
 							action="login.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
 							action="register.xhtml" />
+						<p:commandButton rendered="#{!userBean.isLamp()}"
+							value="#{userBean.nickname}" action="profilePage.xhtml" />
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
 							action="#{userBean.logOut()}" />
 					</c:facet>

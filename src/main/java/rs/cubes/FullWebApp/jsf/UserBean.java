@@ -108,4 +108,10 @@ public class UserBean implements Serializable{
 	public List<User> completeNames(String nickname){
 		return us.searchUser(nickname);
 	}
+	
+	public String fullName() {
+		System.out.println("Name: " + name);
+		System.out.println("Surname: " + surname);
+		return this.name + " " + this.surname;
+	}
 }

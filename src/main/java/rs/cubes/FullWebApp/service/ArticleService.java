@@ -13,6 +13,7 @@ import rs.cubes.FullWebApp.domain.Article;
 public class ArticleService {
 	@PersistenceContext
 	private EntityManager em;
+	
 	public Article createArticle(Article a) {
 		em.persist(a);
 		return a;

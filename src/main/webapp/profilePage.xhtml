@@ -36,6 +36,8 @@
 							action="login.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
 							action="register.xhtml" />
+						<p:commandButton rendered="#{!userBean.isLamp()}"
+							value="#{userBean.nickname}" action="profilePage.xhtml" />
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
 							action="#{userBean.logOut()}" />
 					</c:facet>
@@ -44,14 +46,16 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<p:panelGrid columns="2" >
+			<p:panelGrid columns="2">
 				<c:facet name="header">
-					<p:graphicImage 
-						url="images/tadic.jpg"  width="200" height="200" />
+					<p:graphicImage url="images/tadic.jpg" width="200" height="200" />
 				</c:facet>
 
 				<h:outputText value="Name:" />
-				<h:outputText value="" />
+				<h:outputText value="#{userBean.fullName()}" />
+				
+				<h:outputText value="Nickname:" />
+				<h:outputText value="#{userBean.nickname}" />
 
 			</p:panelGrid>
 		</ui:define>

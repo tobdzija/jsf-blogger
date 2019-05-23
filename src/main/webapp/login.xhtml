@@ -25,11 +25,11 @@
 					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article" url="createArticle.xhtml" />
 
 					<c:facet name="options">
-						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:autoComplete value="#{search}" completeMethod="#{userBean.completeNames}" style="margin:1px 10px 1px 1px;" placeholder="Search" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
 							action="login.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
-							action="register.xhtml" />
+							action="register.xhtml" />	
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
 							action="#{userBean.logOut()}" />
 					</c:facet>
