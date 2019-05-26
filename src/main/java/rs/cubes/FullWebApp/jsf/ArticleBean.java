@@ -1,19 +1,18 @@
 package rs.cubes.FullWebApp.jsf;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import rs.cubes.FullWebApp.domain.Article;
+import rs.cubes.FullWebApp.domain.User;
 import rs.cubes.FullWebApp.service.ArticleService;
-import rs.cubes.FullWebApp.service.UserService;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class ArticleBean implements Serializable {
 	@Inject
 	private ArticleService as;
@@ -23,8 +22,6 @@ public class ArticleBean implements Serializable {
 	private int ratingCounter;
 	private double averageRating; 
 	private Date date;
-	private ArrayList<String> keywords;
-	
 	
 	public long getId() {
 		return id;
@@ -47,8 +44,8 @@ public class ArticleBean implements Serializable {
 	public String getShortContent() {
 		return shortContent;
 	}
-	public void setShortContent(String shortContent) {
-		this.shortContent = shortContent;
+	public void setShortContent(String content) {
+		shortContent = content.substring(0, 150);
 	}
 	public int getRatingCounter() {
 		return ratingCounter;
@@ -68,15 +65,10 @@ public class ArticleBean implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public ArrayList<String> getKeywords() {
-		return keywords;
-	}
-	public void setKeywords(ArrayList<String> keywords) {
-		this.keywords = keywords;
-	}
 	
-	public void createButton() {
-		as.createArticle(new Article(title, content, shortContent, averageRating, date, keywords));
+	public void createArticle() {
+		setShortContent(content);
+		as.createArticle(new Article(title, content, shortContent, averageRating, date));
 	}
 	
 }

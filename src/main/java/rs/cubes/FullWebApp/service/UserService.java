@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import rs.cubes.FullWebApp.domain.User;
 import rs.cubes.FullWebApp.domain.UserQueries;
+import rs.cubes.FullWebApp.jsf.UserBean;
 import rs.cubes.FullWebApp.rest.ErrorMessage;
 import rs.cubes.FullWebApp.utils.EmailRegex;
 
@@ -16,6 +17,9 @@ import rs.cubes.FullWebApp.utils.EmailRegex;
 public class UserService {
 	@PersistenceContext
 	private EntityManager em;
+	
+	private String name;
+	private String surname;
 	
 	public User createUser(User u) {
 		if(u.getUsername().length()>20) {
@@ -52,6 +56,9 @@ public class UserService {
 		List<User> u = query.getResultList();
 		if(u.size()!=0) {
 			nick = u.get(0).getNickname();
+			name = u.get(0).getName();
+			surname = u.get(0).getSurname();
+			
 		}
 		System.out.println("Nik je :" + nick);
 		return nick;
@@ -65,4 +72,23 @@ public class UserService {
 		List<User> users = query.getResultList();
 		return users;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	
+	
 }

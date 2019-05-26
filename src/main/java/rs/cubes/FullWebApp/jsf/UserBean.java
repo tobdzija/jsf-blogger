@@ -3,8 +3,7 @@ package rs.cubes.FullWebApp.jsf;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,7 +11,7 @@ import rs.cubes.FullWebApp.domain.User;
 import rs.cubes.FullWebApp.service.UserService;
 
 @Named
-@ApplicationScoped
+@SessionScoped
 public class UserBean implements Serializable{
 	@Inject
 	private UserService us;
@@ -48,14 +47,14 @@ public class UserBean implements Serializable{
 	public String getSurname() {
 		return surname;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setSurname() {
+		surname = us.getSurname();
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName() {
+		name = us.getName();
 	}
 	public String getPassword() {
 		return password;
@@ -70,15 +69,10 @@ public class UserBean implements Serializable{
 		this.email = email;
 	}
 	
-	public void confirmButton() {
+	public String confirmButton() {
 		us.createUser(new User(username, nickname, surname, name, password, email));
-		username="";
-		password="";
-		name="";
-		nickname="";
-		surname="";
-		email="";
 		
+		return "login?faces-redirect=true";
 	}
 	
 	//promeni povratni tip !
@@ -110,8 +104,10 @@ public class UserBean implements Serializable{
 	}
 	
 	public String fullName() {
+		setName();
+		setSurname();
 		System.out.println("Name: " + name);
 		System.out.println("Surname: " + surname);
-		return this.name + " " + this.surname;
+		return name + " " + surname;
 	}
 }

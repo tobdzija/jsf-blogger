@@ -31,4 +31,6 @@ public class ErrorMessage {
 	public static ErrorMessage usernameExists() {return new ErrorMessage(109,"Username vec postoji u bazi");}
 	
 	
+	public static ErrorMessage titleTooLong() {return new ErrorMessage(110,"Unet TITLE ima vise od 50 karaktera.");}
+	public static ErrorMessage contentTooLong() {return new ErrorMessage(111,"Unet CONTENT ima vise od 5000 karaktera.");}
 }

@@ -1,7 +1,7 @@
 package rs.cubes.FullWebApp.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +20,6 @@ public class Article {
 	private int ratingCounter;
 	private double averageRating; 
 	private Date date;
-	private ArrayList<String> keywords;
 	
 	// mapiranje veza sa entitetima
 	@ManyToOne
@@ -37,15 +36,13 @@ public class Article {
 	
 	public Article() {}
 	
-	public Article(String title, String content, String shortContent, double averageRating,
-			Date date, ArrayList<String> keywords) {
+	public Article(String title, String content, String shortContent, double averageRating, Date date) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.shortContent = shortContent;
 		this.averageRating = averageRating;
 		this.date = date;
-		this.keywords = keywords;
 	}
 
 	public long getId() {
@@ -89,13 +86,5 @@ public class Article {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	public ArrayList<String> getKeywords() {
-		return keywords;
-	}
-	public void setKeywords(ArrayList<String> keywords) {
-		this.keywords = keywords;
-	}
-	
-	
+	}	
 }

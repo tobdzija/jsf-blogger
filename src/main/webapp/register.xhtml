@@ -23,10 +23,13 @@
 						<p:menuitem value="IT" url="#" />
 					</p:submenu>
 
-					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article" url="createArticle.xhtml" />
+					<p:menuitem rendered="#{!userBean.isLamp()}" value="Create Article"
+						url="createArticle.xhtml" />
 
 					<c:facet name="options">
-						<p:autoComplete value="#{search}" completeMethod="#{userBean.completeNames}" style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:autoComplete value="#{search}"
+							completeMethod="#{userBean.completeNames}"
+							style="margin:1px 10px 1px 1px;" placeholder="Search" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Login"
 							action="login.xhtml" />
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
@@ -39,7 +42,7 @@
 		</ui:define>
 
 		<ui:define name="centered">
-			<h:form>
+			<h:form id="form2">
 				<p:growl id="growl" showDetail="false" />
 				<h3>Registration form</h3>
 				<h:panelGrid columns="2" cellpadding="2">
@@ -70,8 +73,17 @@
 				</p>
 				<p>
 					<p:commandButton id="button" value="Create account"
-						action="#{userBean.confirmButton}" update="growl" />
+						action="#{userBean.confirmButton}" update="growl">
+						<p:confirm header="Confirmation" message="Are you sure?" />
+					</p:commandButton>
 				</p>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no" />
+				</p:confirmDialog>
 
 			</h:form>
 		</ui:define>
