@@ -19,6 +19,12 @@ public class ArticleService {
 	private EntityManager em;
 	
 	public Article createArticle(Article a) {
+		if(a.getContent().length()<500) {
+			a.setShortContent(a.getContent().substring(0, a.getContent().length()));
+		}else {
+			a.setShortContent(a.getContent().substring(0, 500));
+		}
+		
 		if(a.getTitle().length()>50) {throw new AppException(ErrorMessage.titleTooLong());}
 		else if(a.getContent().length()>5000) {throw new AppException(ErrorMessage.contentTooLong());}
 		em.persist(a);

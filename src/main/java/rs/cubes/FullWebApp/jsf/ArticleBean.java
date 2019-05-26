@@ -66,9 +66,16 @@ public class ArticleBean implements Serializable {
 		this.date = date;
 	}
 	
-	public void createArticle() {
-		setShortContent(content);
+	private void reset() {
+		title="";
+		content="";		
+	}
+	
+	public String createArticle() {
+		System.out.println("title: " + title);
 		as.createArticle(new Article(title, content, shortContent, averageRating, date));
+		reset();
+		return "createArticle?faces-redirect=true";
 	}
 	
 }

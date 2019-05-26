@@ -14,7 +14,7 @@
 					<p:menuitem value="Home" url="indexNew.xhtml" />
 
 					<p:submenu label="Articles">
-						<p:menuitem value="News" url="#" />
+						<p:menuitem value="View all" url="articlePage.xtml" />
 						<p:submenu label="Sport" url="#">
 							<p:menuitem value="Football" url="#" />
 							<p:menuitem value="Basketball" url="#" />
@@ -58,6 +58,8 @@
 					 oncomplete="PF('dlg').show()" />
 				<p:commandButton value="Clear" type="button"
 					onclick="PF('editor1').clear();" />
+					
+				<p:commandButton value="Back to articles" action="articlePage?faces-redirect=true"/>
 
 			</h:form>
 		</ui:define>
