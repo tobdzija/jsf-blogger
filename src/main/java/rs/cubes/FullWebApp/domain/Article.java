@@ -42,7 +42,7 @@ public class Article {
 		this.content = content;
 		this.shortContent = shortContent;
 		this.averageRating = averageRating;
-		this.date = date;
+		this.date = date;	
 	}
 
 	public long getId() {

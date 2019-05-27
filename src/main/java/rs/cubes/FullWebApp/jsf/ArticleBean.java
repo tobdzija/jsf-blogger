@@ -77,5 +77,4 @@ public class ArticleBean implements Serializable {
 		reset();
 		return "createArticle?faces-redirect=true";
 	}
-	
 }

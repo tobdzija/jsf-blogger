@@ -110,4 +110,8 @@ public class UserBean implements Serializable{
 		System.out.println("Surname: " + surname);
 		return name + " " + surname;
 	}
+	
+	public String profilePage() {
+		return "profilePage?faces-redirect=true";
+	}
 }

@@ -37,7 +37,7 @@
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
 							action="register.xhtml" />
 						<p:commandButton rendered="#{!userBean.isLamp()}"
-							value="#{userBean.nickname}" action="profilePage.xhtml" />
+							value="#{userBean.nickname}" action="#{userBean.profilePage()}" />
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
 							action="#{userBean.logOut()}" />
 					</c:facet>

@@ -35,7 +35,7 @@
 						<p:commandButton rendered="#{userBean.isLamp()}" value="Register"
 							action="register.xhtml" />
 						<p:commandButton rendered="#{!userBean.isLamp()}"
-							value="#{userBean.nickname}" action="profilePage.xhtml" />
+							value="#{userBean.nickname}" action="#{userBean.profilePage()}" />
 						<p:commandButton rendered="#{!userBean.isLamp()}" value="Logout"
 							action="#{userBean.logOut()}" />
 					</c:facet>
@@ -58,9 +58,6 @@
 					 oncomplete="PF('dlg').show()" />
 				<p:commandButton value="Clear" type="button"
 					onclick="PF('editor1').clear();" />
-					
-				<p:commandButton value="Back to articles" action="articlePage?faces-redirect=true"/>
-
 			</h:form>
 		</ui:define>
 	</ui:composition>
