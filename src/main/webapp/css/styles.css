@@ -32,10 +32,11 @@
 
 #content {
 	top: 3em;
-	position: relative;
+	position: absolute;
 	margin-left: 165px;
 	padding: 5px;
-	margin-bottom:85px;
+	margin-bottom: 85px;
+	width:80%;
 }
 
 #bottom {

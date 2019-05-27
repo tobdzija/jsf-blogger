@@ -21,7 +21,7 @@ public class ArticleBean implements Serializable {
 	private String title, content, shortContent;
 	private int ratingCounter;
 	private double averageRating; 
-	private Date date;
+	private Date date = new Date();
 	
 	public long getId() {
 		return id;
@@ -45,7 +45,7 @@ public class ArticleBean implements Serializable {
 		return shortContent;
 	}
 	public void setShortContent(String content) {
-		shortContent = content.substring(0, 150);
+		shortContent = content;
 	}
 	public int getRatingCounter() {
 		return ratingCounter;

@@ -15,7 +15,7 @@
 					<p:menuitem value="Home" url="indexNew.xhtml" />
 
 					<p:submenu label="Articles">
-						<p:menuitem value="View all" url="articlePage.xtml" />
+						<p:menuitem value="View all" url="articlePage.xhtml" />
 						<p:submenu label="Sport" url="#">
 							<p:menuitem value="Football" url="#" />
 							<p:menuitem value="Basketball" url="#" />
@@ -40,7 +40,18 @@
 		</ui:define>
 
 		<ui:define name="content">
-			<h1>Article goes here.</h1>
+			<h:form>
+				<p:fieldset style="margin-bottom:20px">
+					<h:panelGrid columns="2" cellpadding="5" width="1000">
+						<p:graphicImage url="images/tadic.jpg" width="200" height="200" />
+						<h:outputText
+							value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                but given to ruthless violence whenever anything stands against the good of the family." />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
 		</ui:define>
 
 		<ui:define name="left">
